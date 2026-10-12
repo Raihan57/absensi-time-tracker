@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Absensi Time Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Absensi & Time Tracker</h1>
+        <p>Login ke sistem</p>
+    </header>
+
+    <main>
+
+        <section class="attendance">
+
+            <h2>Login</h2>
+
+            <label for="email">Email</label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Masukkan email"
+            >
+
+            <br><br>
+
+            <label for="password">Password</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Masukkan password"
+            >
+
+            <br><br>
+
+            <button id="loginBtn">
+                Login
+            </button>
+
+            <p id="message"></p>
+
+            <p>
+                Belum punya akun?
+                <a href="signup.html">Sign Up</a>
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- Supabase -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- JavaScript Login -->
+
+    <script src="login.js"></script>
+
+</body>
+
+</html>

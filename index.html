@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Absensi & Time Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Absensi & Time Tracker</h1>
+
+        <p>Sistem Absensi dan Pelacak Jam Kerja</p>
+
+        <div class="user-info">
+
+            <span id="userEmail">
+                Loading...
+            </span>
+
+            <button id="logoutBtn">
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- ==========================
+             DASHBOARD
+        =========================== -->
+
+        <section class="dashboard">
+
+            <div class="card">
+                <h2>Status Absensi</h2>
+                <p id="status">Belum Clock In</p>
+            </div>
+
+            <div class="card">
+                <h2>Jam Masuk</h2>
+                <p id="clockIn">-</p>
+            </div>
+
+            <div class="card">
+                <h2>Jam Keluar</h2>
+                <p id="clockOut">-</p>
+            </div>
+
+            <div class="card">
+                <h2>Durasi Kerja</h2>
+                <p id="duration">
+                    0 jam 0 menit
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             ABSENSI
+        =========================== -->
+
+        <section class="attendance">
+
+            <h2>Absensi Hari Ini</h2>
+
+            <label for="project">
+                Pilih Proyek
+            </label>
+
+            <select id="project">
+
+                <option value="">
+                    -- Pilih Proyek --
+                </option>
+
+                <option value="Website">
+                    Website
+                </option>
+
+                <option value="Aplikasi">
+                    Aplikasi
+                </option>
+
+                <option value="Project UTS">
+                    Project UTS
+                </option>
+
+            </select>
+
+
+            <div class="buttons">
+
+                <button id="clockInBtn">
+                    Clock In
+                </button>
+
+                <button id="clockOutBtn" disabled>
+                    Clock Out
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             REKAP JAM KERJA
+        =========================== -->
+
+        <section class="recap">
+
+            <h2>Rekap Jam Kerja</h2>
+
+            <div class="dashboard">
+
+                <div class="card">
+
+                    <h2>Total Hari Kerja</h2>
+
+                    <p id="totalDays">
+                        0 hari
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h2>Total Jam Kerja</h2>
+
+                    <p id="totalWorkHours">
+                        0 jam 0 menit
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h2>Total Lembur</h2>
+
+                    <p id="totalOvertime">
+                        0 jam 0 menit
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             RIWAYAT ABSENSI
+        =========================== -->
+
+        <section class="history">
+
+            <h2>Riwayat Absensi</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Tanggal</th>
+
+                        <th>Proyek</th>
+
+                        <th>Clock In</th>
+
+                        <th>Clock Out</th>
+
+                        <th>Durasi</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="historyTable">
+
+                    <tr>
+
+                        <td colspan="5">
+                            Belum ada data absensi
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================
+         FOOTER
+    =========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Absensi & Time Tracker
+        </p>
+
+    </footer>
+
+
+    <!-- ==========================
+         SUPABASE
+    =========================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
