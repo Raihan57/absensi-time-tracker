@@ -1,72 +1,76 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="theme-color" content="#171a3b">
     <title>Login - Absensi Time Tracker</title>
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
 </head>
-
-<body>
-
-    <header>
-        <h1>Absensi & Time Tracker</h1>
-        <p>Login ke sistem</p>
-    </header>
-
-    <main>
-
-        <section class="attendance">
-
-            <h2>Login</h2>
-
-            <label for="email">Email</label>
-
-            <input
-                type="email"
-                id="email"
-                placeholder="Masukkan email"
-            >
-
-            <br><br>
-
-            <label for="password">Password</label>
-
-            <input
-                type="password"
-                id="password"
-                placeholder="Masukkan password"
-            >
-
-            <br><br>
-
-            <button id="loginBtn">
-                Login
-            </button>
-
-            <p id="message"></p>
-
-            <p>
-                Belum punya akun?
-                <a href="signup.html">Sign Up</a>
-            </p>
-
+<body class="login-page">
+    <main class="login-layout">
+        <section class="welcome-panel" aria-label="Tentang aplikasi">
+            <div class="brand">
+                <div class="brand-mark" aria-hidden="true">⌚</div>
+                <span>TIME<span class="brand-accent">TRACKER</span></span>
+            </div>
+            <div class="welcome-copy">
+                <span class="eyebrow"><span class="status-dot"></span> WORK SMARTER EVERY DAY</span>
+                <h1>Waktu kerja lebih <span>teratur.</span></h1>
+                <p>Catat kehadiran, pantau jam kerja, dan kelola aktivitas proyekmu dalam satu tempat.</p>
+            </div>
+            <div class="feature-list">
+                <div class="feature"><span class="feature-icon">✓</span><span>Absensi masuk dan pulang dengan mudah</span></div>
+                <div class="feature"><span class="feature-icon">◷</span><span>Rekap durasi dan riwayat kerja</span></div>
+                <div class="feature"><span class="feature-icon">↗</span><span>Pantau aktivitas proyekmu</span></div>
+            </div>
+            <div class="panel-footer">ABSENSI &amp; TIME TRACKER <span>•</span> SIMPLE. FOCUSED. PRODUCTIVE.</div>
         </section>
 
+        <section class="login-side" aria-label="Form login">
+            <div class="login-card">
+                <div class="mobile-brand">
+                    <div class="brand-mark" aria-hidden="true">⌚</div>
+                    <span>TIME<span class="brand-accent">TRACKER</span></span>
+                </div>
+                <div class="form-heading">
+                    <div class="form-icon" aria-hidden="true">↗</div>
+                    <p class="form-kicker">SELAMAT DATANG KEMBALI</p>
+                    <h2>Masuk ke akunmu</h2>
+                    <p class="form-description">Masukkan email dan password untuk melanjutkan.</p>
+                </div>
+
+                <form id="loginForm">
+                    <div class="field">
+                        <label for="email">Alamat email</label>
+                        <div class="input-wrap">
+                            <span class="input-icon" aria-hidden="true">✉</span>
+                            <input type="email" id="email" name="email" placeholder="nama@email.com" autocomplete="email" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <div class="input-wrap">
+                            <span class="input-icon" aria-hidden="true">⌑</span>
+                            <input type="password" id="password" name="password" placeholder="Masukkan password" autocomplete="current-password" required>
+                            <button class="password-toggle" type="button" id="togglePassword" aria-label="Tampilkan password">Lihat</button>
+                        </div>
+                    </div>
+                    <button id="loginBtn" class="login-button" type="submit"><span>Masuk sekarang</span><span aria-hidden="true">→</span></button>
+                    <p id="message" class="message" role="status" aria-live="polite"></p>
+                </form>
+
+                <div class="signup-prompt">Belum punya akun? <a href="signup.html">Daftar di sini</a></div>
+                <div class="secure-note"><span aria-hidden="true">▣</span> Login aman untuk akunmu</div>
+            </div>
+            <p class="copyright">© 2026 Absensi Time Tracker</p>
+        </section>
     </main>
 
-
-    <!-- Supabase -->
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <!-- JavaScript Login -->
-
     <script src="login.js"></script>
-
 </body>
-
 </html>
