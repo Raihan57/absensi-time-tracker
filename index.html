@@ -1,235 +1,120 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Absensi & Time Tracker</title>
-
+    <meta name="theme-color" content="#312e81">
+    <title>Absensi Harian</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
     <header>
-
-        <h1>Absensi & Time Tracker</h1>
-
-        <p>Sistem Absensi dan Pelacak Jam Kerja</p>
-
-        <div class="user-info">
-
-            <span id="userEmail">
-                Loading...
-            </span>
-
-            <button id="logoutBtn">
-                Logout
-            </button>
-
+        <div class="header-content">
+            <div class="brand">
+                <div class="brand-mark">A</div>
+                <div>
+                    <p class="eyebrow">DASHBOARD PERSONAL</p>
+                    <h1>Absensi Harian</h1>
+                    <p class="header-subtitle">Catat kehadiranmu dengan mudah dan rapi.</p>
+                </div>
+            </div>
+            <div class="user-info">
+                <span class="user-avatar" aria-hidden="true">●</span>
+                <span id="userEmail">Memuat akun...</span>
+                <button id="logoutBtn" type="button">Keluar ↗</button>
+            </div>
         </div>
-
     </header>
 
-
     <main>
-
-        <!-- ==========================
-             DASHBOARD
-        =========================== -->
-
-        <section class="dashboard">
-
-            <div class="card">
-                <h2>Status Absensi</h2>
-                <p id="status">Belum Clock In</p>
+        <section class="welcome-row">
+            <div>
+                <p class="eyebrow light-eyebrow">RINGKASAN HARI INI</p>
+                <h2>Halo, semangat beraktivitas! 👋</h2>
+                <p class="muted">Jangan lupa catat kehadiranmu hari ini.</p>
             </div>
-
-            <div class="card">
-                <h2>Jam Masuk</h2>
-                <p id="clockIn">-</p>
-            </div>
-
-            <div class="card">
-                <h2>Jam Keluar</h2>
-                <p id="clockOut">-</p>
-            </div>
-
-            <div class="card">
-                <h2>Durasi Kerja</h2>
-                <p id="duration">
-                    0 jam 0 menit
-                </p>
-            </div>
-
+            <div class="today-chip"><span class="live-dot"></span><span id="todayDate">Absensi harian</span></div>
         </section>
 
+        <section class="dashboard" aria-label="Status absensi hari ini">
+            <article class="card">
+                <div class="card-icon purple">◎</div>
+                <div><h2>Status Absensi</h2><p id="status">Belum Absen</p></div>
+            </article>
+            <article class="card">
+                <div class="card-icon blue">↗</div>
+                <div><h2>Jam Masuk</h2><p id="clockIn">-</p></div>
+            </article>
+            <article class="card">
+                <div class="card-icon orange">↘</div>
+                <div><h2>Jam Keluar</h2><p id="clockOut">-</p></div>
+            </article>
+            <article class="card">
+                <div class="card-icon green">◷</div>
+                <div><h2>Durasi Kerja</h2><p id="duration">0 jam 0 menit</p></div>
+            </article>
+        </section>
 
-        <!-- ==========================
-             ABSENSI
-        =========================== -->
-
-        <section class="attendance">
-
-            <h2>Absensi Hari Ini</h2>
-
-            <label for="project">
-                Pilih Proyek
-            </label>
-
+        <section class="attendance panel">
+            <div class="section-heading">
+                <div class="section-icon">✓</div>
+                <div><h2>Catat Kehadiran</h2><p>Pilih status kehadiran sebelum mulai.</p></div>
+            </div>
+            <label for="project">Status kehadiran</label>
             <select id="project">
-
-                <option value="">
-                    -- Pilih Proyek --
-                </option>
-
-                <option value="Website">
-                    Website
-                </option>
-
-                <option value="Aplikasi">
-                    Aplikasi
-                </option>
-
-                <option value="Project UTS">
-                    Project UTS
-                </option>
-
+                <option value="">-- Pilih status kehadiran --</option>
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak Hadir">Tidak Hadir</option>
             </select>
-
-
+            <p class="helper-text">Pilih “Hadir” untuk mencatat jam masuk dan keluar. Pilih “Tidak Hadir” untuk mencatat ketidakhadiran.</p>
             <div class="buttons">
-
-                <button id="clockInBtn">
-                    Clock In
-                </button>
-
-                <button id="clockOutBtn" disabled>
-                    Clock Out
-                </button>
-
+                <button id="clockInBtn" type="button">↗  Clock In</button>
+                <button id="clockOutBtn" type="button" disabled>↘  Clock Out</button>
             </div>
-
+            <p class="attendance-note">Data kehadiran tersimpan di akunmu dan dapat dilihat kembali pada riwayat.</p>
         </section>
-
-
-        <!-- ==========================
-             REKAP JAM KERJA
-        =========================== -->
 
         <section class="recap">
-
-            <h2>Rekap Jam Kerja</h2>
-
-            <div class="dashboard">
-
-                <div class="card">
-
-                    <h2>Total Hari Kerja</h2>
-
-                    <p id="totalDays">
-                        0 hari
-                    </p>
-
-                </div>
-
-
-                <div class="card">
-
-                    <h2>Total Jam Kerja</h2>
-
-                    <p id="totalWorkHours">
-                        0 jam 0 menit
-                    </p>
-
-                </div>
-
-
-                <div class="card">
-
-                    <h2>Total Lembur</h2>
-
-                    <p id="totalOvertime">
-                        0 jam 0 menit
-                    </p>
-
-                </div>
-
+            <div class="section-title-row"><div><p class="eyebrow light-eyebrow">STATISTIK</p><h2>Rekap Absensi</h2></div></div>
+            <div class="dashboard recap-grid">
+                <article class="card">
+                    <div class="card-icon blue">▦</div>
+                    <div><h2>Total Catatan</h2><p id="totalDays">0 hari</p></div>
+                </article>
+                <article class="card">
+                    <div class="card-icon green">◷</div>
+                    <div><h2>Total Jam Kerja</h2><p id="totalWorkHours">0 jam 0 menit</p></div>
+                </article>
+                <article class="card">
+                    <div class="card-icon orange">⚡</div>
+                    <div><h2>Total Lembur</h2><p id="totalOvertime">0 jam 0 menit</p></div>
+                </article>
             </div>
-
         </section>
 
-
-        <!-- ==========================
-             RIWAYAT ABSENSI
-        =========================== -->
-
-        <section class="history">
-
-            <h2>Riwayat Absensi</h2>
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Tanggal</th>
-
-                        <th>Proyek</th>
-
-                        <th>Clock In</th>
-
-                        <th>Clock Out</th>
-
-                        <th>Durasi</th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody id="historyTable">
-
-                    <tr>
-
-                        <td colspan="5">
-                            Belum ada data absensi
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
+        <section class="history panel">
+            <div class="section-heading history-heading">
+                <div class="section-icon">▤</div>
+                <div><h2>Riwayat Absensi</h2><p>Daftar catatan kehadiran akunmu.</p></div>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Tanggal</th><th>Status</th><th>Jam Masuk</th><th>Jam Keluar</th><th>Durasi</th></tr></thead>
+                    <tbody id="historyTable"><tr><td colspan="5" class="empty-state">Memuat riwayat absensi...</td></tr></tbody>
+                </table>
+            </div>
         </section>
-
     </main>
 
-
-    <!-- ==========================
-         FOOTER
-    =========================== -->
-
-    <footer>
-
-        <p>
-            © 2026 Absensi & Time Tracker
-        </p>
-
-    </footer>
-
-
-    <!-- ==========================
-         SUPABASE
-    =========================== -->
-
+    <footer>© 2026 <strong>Absensi Harian</strong> · Dibuat untuk membantu pencatatan kehadiran.</footer>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <script src="script.js"></script>
-
+    <script>
+        const todayDate = document.getElementById("todayDate");
+        if (todayDate) todayDate.textContent = new Date().toLocaleDateString("id-ID", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    </script>
 </body>
-
 </html>
