@@ -135,6 +135,15 @@ clockInBtn.addEventListener(
             return;
         }
 
+        if (selectedProject === "Tidak Hadir") {
+            const { data: userData, error: userError } = await supabaseClient.auth.getUser();
+            if (userError || !userData.user) { alert("Sesi login tidak ditemukan. Silakan login kembali."); window.location.href = "login.html"; return; }
+            const { error } = await supabaseClient.from("attendance").insert([{ user_id: userData.user.id, project: "Tidak Hadir", clock_in: null, clock_out: null, duration_seconds: 0 }]);
+            if (error) { console.error("Gagal menyimpan absensi:", error); alert("Absensi gagal disimpan. Silakan coba lagi."); return; }
+            statusText.textContent = "Tidak Hadir"; clockInText.textContent = "-"; clockOutText.textContent = "-"; durationText.textContent = "0 jam 0 menit"; projectSelect.value = "";
+            alert("Status Tidak Hadir berhasil dicatat."); await loadHistory(); return;
+        }
+
         clockInTime =
             new Date();
 
@@ -583,44 +592,17 @@ async function loadHistory() {
     data.forEach(
         function (item) {
 
-            const clockIn =
-                new Date(
-                    item.clock_in
-                );
+            const clockIn = item.clock_in ? new Date(item.clock_in) : null;
+            const clockOut = item.clock_out ? new Date(item.clock_out) : null;
 
 
-            const clockOut =
-                new Date(
-                    item.clock_out
-                );
+            const clockInDisplay = clockIn ? clockIn.toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" }) : "-";
 
 
-            const clockInDisplay =
-                clockIn.toLocaleTimeString(
-                    "id-ID",
-                    {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        second: "2-digit"
-                    }
-                );
+            const clockOutDisplay = clockOut ? clockOut.toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" }) : "-";
 
 
-            const clockOutDisplay =
-                clockOut.toLocaleTimeString(
-                    "id-ID",
-                    {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        second: "2-digit"
-                    }
-                );
-
-
-            const dateDisplay =
-                clockIn.toLocaleDateString(
-                    "id-ID"
-                );
+            const dateDisplay = (clockIn || new Date(item.created_at)).toLocaleDateString("id-ID");
 
 
             const totalSeconds =
