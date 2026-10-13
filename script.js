@@ -121,7 +121,7 @@ logoutBtn.addEventListener(
 
 clockInBtn.addEventListener(
     "click",
-    function () {
+    async function () {
 
         selectedProject =
             projectSelect.value;
